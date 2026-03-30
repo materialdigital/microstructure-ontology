@@ -214,6 +214,8 @@ AnnotationAssertion(rdfs:label obo:IAO_0000115 "textual definition")
 
 # Annotation Property: <http://purl.org/dc/elements/1.1/source> (Source)
 
+AnnotationAssertion(rdfs:comment <http://purl.org/dc/elements/1.1/source> "A reference to a resource from which the present resource
+         is derived."@en-us)
 AnnotationAssertion(rdfs:label <http://purl.org/dc/elements/1.1/source> "Source")
 AnnotationAssertion(rdfs:label <http://purl.org/dc/elements/1.1/source> "Source"@en-us)
 
@@ -265,6 +267,7 @@ ObjectPropertyDomain(obo:IAO_0000136 obo:IAO_0000030)
 # Object Property: obo:IAO_0000219 (denotes)
 
 AnnotationAssertion(obo:IAO_0000115 obo:IAO_0000219 "A primitive, instance-level, relation obtaining between an information content entity and some portion of reality. Denotation is what happens when someone creates an information content entity E in order to specifically refer to something. The only relation between E and the thing is that E can be used to 'pick out' the thing. This relation connects those two together. Freedictionary.com sense 3: To signify directly; refer to specifically"@en)
+AnnotationAssertion(rdfs:comment obo:IAO_0000219 ""@en)
 AnnotationAssertion(rdfs:label obo:IAO_0000219 "denotes"@en)
 SubObjectPropertyOf(obo:IAO_0000219 obo:IAO_0000136)
 InverseObjectProperties(obo:IAO_0000219 obo:IAO_0000235)
@@ -348,6 +351,7 @@ ObjectPropertyRange(obo:OBI_0001938 obo:OBI_0001933)
 # Object Property: obo:RO_0000052 (characteristic of)
 
 AnnotationAssertion(obo:IAO_0000115 obo:RO_0000052 "a relation between a specifically dependent continuant (the characteristic) and any other entity (the bearer), in which the characteristic depends on the bearer for its existence."@en)
+AnnotationAssertion(rdfs:comment obo:RO_0000052 "Note that this relation was previously called \"inheres in\", but was changed to be called \"characteristic of\" because BFO2 uses \"inheres in\" in a more restricted fashion. This relation differs from BFO2:inheres_in in two respects: (1) it does not impose a range constraint, and thus it allows qualities of processes, as well as of information entities, whereas BFO2 restricts inheres_in to only apply to independent continuants (2) it is declared functional, i.e. something can only be a characteristic of one thing.")
 AnnotationAssertion(rdfs:label obo:RO_0000052 "characteristic of"@en)
 InverseObjectProperties(obo:RO_0000052 obo:RO_0000053)
 FunctionalObjectProperty(obo:RO_0000052)
@@ -394,6 +398,7 @@ ObjectPropertyRange(obo:RO_0000059 obo:BFO_0000031)
 # Object Property: obo:RO_0000079 (function of)
 
 AnnotationAssertion(obo:IAO_0000115 obo:RO_0000079 "a relation between a function and an independent continuant (the bearer), in which the function specifically depends on the bearer for its existence"@en)
+AnnotationAssertion(rdfs:comment obo:RO_0000079 "This relation is modeled after the BFO relation of the same name which was in BFO2, but is used in a more restricted sense - specifically, we model this relation as functional (inherited from characteristic-of). Note that this relation is now removed from BFO2020.")
 AnnotationAssertion(rdfs:label obo:RO_0000079 "function of"@en)
 SubObjectPropertyOf(obo:RO_0000079 obo:RO_0000052)
 InverseObjectProperties(obo:RO_0000079 obo:RO_0000085)
@@ -402,6 +407,7 @@ ObjectPropertyDomain(obo:RO_0000079 obo:BFO_0000034)
 # Object Property: obo:RO_0000080 (quality of)
 
 AnnotationAssertion(obo:IAO_0000115 obo:RO_0000080 "a relation between a quality and an independent continuant (the bearer), in which the quality specifically depends on the bearer for its existence"@en)
+AnnotationAssertion(rdfs:comment obo:RO_0000080 "This relation is modeled after the BFO relation of the same name which was in BFO2, but is used in a more restricted sense - specifically, we model this relation as functional (inherited from characteristic-of). Note that this relation is now removed from BFO2020.")
 AnnotationAssertion(rdfs:label obo:RO_0000080 "quality of"@en)
 SubObjectPropertyOf(obo:RO_0000080 obo:RO_0000052)
 InverseObjectProperties(obo:RO_0000080 obo:RO_0000086)
@@ -410,6 +416,7 @@ ObjectPropertyDomain(obo:RO_0000080 ObjectIntersectionOf(obo:BFO_0000019 ObjectC
 # Object Property: obo:RO_0000081 (role of)
 
 AnnotationAssertion(obo:IAO_0000115 obo:RO_0000081 "a relation between a role and an independent continuant (the bearer), in which the role specifically depends on the bearer for its existence"@en)
+AnnotationAssertion(rdfs:comment obo:RO_0000081 "This relation is modeled after the BFO relation of the same name which was in BFO2, but is used in a more restricted sense - specifically, we model this relation as functional (inherited from characteristic-of). Note that this relation is now removed from BFO2020.")
 AnnotationAssertion(rdfs:label obo:RO_0000081 "role of"@en)
 SubObjectPropertyOf(obo:RO_0000081 obo:RO_0000052)
 InverseObjectProperties(obo:RO_0000081 obo:RO_0000087)
@@ -449,6 +456,7 @@ ObjectPropertyRange(obo:RO_0000091 obo:BFO_0000016)
 # Object Property: obo:RO_0000092 (disposition of)
 
 AnnotationAssertion(obo:IAO_0000115 obo:RO_0000092 "inverse of has disposition")
+AnnotationAssertion(rdfs:comment obo:RO_0000092 "This relation is modeled after the BFO relation of the same name which was in BFO2, but is used in a more restricted sense - specifically, we model this relation as functional (inherited from characteristic-of). Note that this relation is now removed from BFO2020.")
 AnnotationAssertion(rdfs:label obo:RO_0000092 "disposition of"@en)
 SubObjectPropertyOf(obo:RO_0000092 obo:RO_0000052)
 
@@ -670,6 +678,13 @@ SubClassOf(obo:IAO_0000033 ObjectSomeValuesFrom(obo:IAO_0000136 obo:BFO_0000017)
 # Class: obo:IAO_0000104 (plan specification)
 
 AnnotationAssertion(obo:IAO_0000115 obo:IAO_0000104 "A directive information entity with action specifications and objective specifications as parts, and that may be concretized as a realizable entity that, if realized, is realized in a process in which the bearer tries to achieve the objectives by taking the actions specified."@en)
+AnnotationAssertion(rdfs:comment obo:IAO_0000104 "2/3/2009 Comment from OBI review.
+
+Action specification not well enough specified.
+Conditional specification not well enough specified.
+Question whether all plan specifications have objective specifications.
+
+Request that IAO either clarify these or change definitions not to use them"@en)
 AnnotationAssertion(rdfs:label obo:IAO_0000104 "plan specification"@en)
 SubClassOf(obo:IAO_0000104 obo:IAO_0000033)
 SubClassOf(obo:IAO_0000104 ObjectSomeValuesFrom(obo:BFO_0000051 obo:IAO_0000005))
@@ -685,6 +700,7 @@ SubClassOf(obo:IAO_0000109 ObjectSomeValuesFrom(obo:OBI_0001938 obo:OBI_0001933)
 # Class: obo:IAO_0020000 (identifier)
 
 AnnotationAssertion(obo:IAO_0000115 obo:IAO_0020000 "An information content entity that is the outcome of a dubbing process and is used to refer to one instance of entity shared by a group of people to refer to that individual entity."@en)
+AnnotationAssertion(rdfs:comment obo:IAO_0020000 "Sep 29, 2016: The current definition has been amended from the previous version: \"A proper name is an information content entity that is the outcome of a dubbing process and is used to refer to one instance of entity shared by a group of people to refer to that individual entity.\" to more accuratly reflect the necessary and sufficient condition on the class. (MB)"@en)
 AnnotationAssertion(rdfs:label obo:IAO_0020000 "identifier"@en)
 EquivalentClasses(obo:IAO_0020000 ObjectIntersectionOf(obo:IAO_0000030 ObjectSomeValuesFrom(obo:IAO_0000219 obo:BFO_0000001) ObjectSomeValuesFrom(obo:OBI_0000312 obo:IAO_0020010)))
 SubClassOf(obo:IAO_0020000 obo:IAO_0000030)
@@ -740,17 +756,28 @@ SubClassOf(obo:OBI_0001933 obo:IAO_0000030)
 
 # Class: <https://w3id.org/pmd/co/PMD_0000000> (Material)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000000> "Instances of Portions Of Matter whose shape is relevant for their dispostion to participate in a manufacturing process may be (subclasses of) objects that bear a 'blank role' in the context of the manufacturing process."@en)
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000000> "Material is defined in terms of the three main perspectives that material specifications rely on: the structure of the material (\"intensive quality\"), the performance of the material (\"behavoiral material property\") and the processing the material must have undergone (\"output of some process\").
+
+When defining specific materials/material taxonomies, these three aspects shall be taken into account in the aristotelian (\"per genus et differentiam\") as differentiation."@en)
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000000> "The sum of portions of matter of the same type form a portion of matter of that type."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000000> "Material"@de)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000000> "material"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000000> ObjectIntersectionOf(<https://w3id.org/pmd/co/PMD_0000001> ObjectSomeValuesFrom(obo:RO_0000053 <https://w3id.org/pmd/co/PMD_0000005>) ObjectSomeValuesFrom(obo:RO_0000086 <https://w3id.org/pmd/co/PMD_0020131>) ObjectSomeValuesFrom(obo:RO_0002353 obo:BFO_0000015)))
 
 # Class: <https://w3id.org/pmd/co/PMD_0000001> (portion of matter)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000001> "It is also representing a distinct physical or conceptual part of a material or substance.
+
+The open energy ontology OEO defines portion of matter as a subclass of object aggregate, which implies countability. Our portion is not (precisely) countable and thus bearer of intensive properties."@en)
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000001> "Lome explanation for portion of matter: \"What is a molecule cluster at the cellular level? Contrary to the molecular level, at the cellular level of granularity the boundary of each molecule is outside of the level of granular focus. What forms a discontinuous cluster of countable individual molecules and thus bona fide objects at the molecular level, is a continuous and non-countable molecular substance at coarser levels of
+granularity. At these coarser levels, the individual molecules cannot be differentiated and demarcated anymore and the cluster as a whole possesses only fiat inner boundaries.\""@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000001> "portion of matter"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000001> obo:BFO_0000040)
 
 # Class: <https://w3id.org/pmd/co/PMD_0000002> (engineered material)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000002> "We recognize that some of the materials in the subclasses also occur naturally. However, these are not within the scope of our consideration for technical use."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000002> "engineered material"@en)
 EquivalentClasses(<https://w3id.org/pmd/co/PMD_0000002> ObjectIntersectionOf(<https://w3id.org/pmd/co/PMD_0000000> ObjectSomeValuesFrom(obo:OBI_0000312 <https://w3id.org/pmd/co/PMD_0000833>)))
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000002> <https://w3id.org/pmd/co/PMD_0000000>)
@@ -758,10 +785,18 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000002> ObjectSomeValuesFrom(obo:OBI_00
 
 # Class: <https://w3id.org/pmd/co/PMD_0000005> (material property)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000005> "A property is a material trait in terms of the kind and magnitude of response to a specific imposed stimulus. Generally, definitions of properties are made independent of material shape and size.
+(Callister, W.D., Rethwisch, D.G., Materials Science and Engineering, Wiley, 2014)
+
+Technical materials are complex aggregates. Many properties that are determined for those aggregates are intrinsically associated with the methodologies employed in the measurement process. This is in contrast to typical 'physical' properties, which like e.g. mass that can be determined to high accuracy independently of the measurement process. 
+As a consequence, material properties in the ontology are differeciated according to their measurement method, e.g. Brinell hardness and Vickers hardness are different types of indentation hardness rather than different measures/quantification (GDC) of the materials property 'indentation hardness'.
+ The 'unit idenifieres' of such properties (e.g. \"HV1\", \"HV10\", \"HBW\") are strictly speaking not units but rather references to the measurement methodology used to determine a numeric value that quantifies the property.
+
+Extensive properties that depend on the object being tested rather than on the portion of matter are (extensive) object- or system-properties."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000005> "material property"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000005> obo:BFO_0000016)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000005> ObjectSomeValuesFrom(obo:BFO_0000054 <https://w3id.org/pmd/co/PMD_0000950>))
-SubClassOf(<https://w3id.org/pmd/co/PMD_0000005> ObjectSomeValuesFrom(obo:RO_0000052 ObjectIntersectionOf(<https://w3id.org/pmd/co/PMD_0000001> ObjectSomeValuesFrom(obo:RO_0000056 obo:BFO_0000015))))
+SubClassOf(Annotation(rdfs:comment "Due to the duality of object and portion of matter this axiom can not be an equivalent class axiom."@en) <https://w3id.org/pmd/co/PMD_0000005> ObjectSomeValuesFrom(obo:RO_0000052 ObjectIntersectionOf(<https://w3id.org/pmd/co/PMD_0000001> ObjectSomeValuesFrom(obo:RO_0000056 obo:BFO_0000015))))
 
 # Class: <https://w3id.org/pmd/co/PMD_0000110> (geological process)
 
@@ -806,6 +841,7 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000583> ObjectIntersectionOf(ObjectSome
 
 # Class: <https://w3id.org/pmd/co/PMD_0000591> (crystal structure)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000591> "The finite set of periodic geometric arrangements is described e.g. by the 14 possible Bravais Lattices in three-dimensional space."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000591> "crystal structure"@en)
 EquivalentClasses(<https://w3id.org/pmd/co/PMD_0000591> ObjectExactCardinality(1 <https://w3id.org/pmd/co/PMD_0000077> <https://w3id.org/pmd/co/PMD_0020099>))
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000591> <https://w3id.org/pmd/co/PMD_0020131>)
@@ -841,6 +877,7 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000654> ObjectSomeValuesFrom(obo:BFO_00
 
 # Class: <https://w3id.org/pmd/co/PMD_0000661> (glass)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000661> "It is often composed of silica-based compounds."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000661> "glass"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000661> <https://w3id.org/pmd/co/PMD_0000000>)
 
@@ -863,6 +900,7 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000777> ObjectSomeValuesFrom(<https://w
 
 # Class: <https://w3id.org/pmd/co/PMD_0000790> (refraction (optical))
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000790> "e.g., air into glass"@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000790> "refraction (optical)"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000790> <https://w3id.org/pmd/co/PMD_0000877>)
 
@@ -873,6 +911,9 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000802> obo:BFO_0000015)
 
 # Class: <https://w3id.org/pmd/co/PMD_0000833> (manufacturing process)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000833> "Manufacturing processes alternate qualities of materials, i.e., a value specification of some quality of a material entity, which is a specified input to the process, cannot be the same as a value specification of the same quality of another material entity, which is a specified output of the process. 
+
+Unfortunately it is not possible to write down such axiom based on OWL. Semi-working solution are the temporally qualified continuants + SPARQL constrains."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000833> "Herstellungsprozess"@de)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000833> "manufacturing process"@en)
 EquivalentClasses(<https://w3id.org/pmd/co/PMD_0000833> ObjectIntersectionOf(obo:COB_0000035 ObjectSomeValuesFrom(obo:OBI_0000293 ObjectUnionOf(obo:BFO_0000027 obo:BFO_0000030)) ObjectSomeValuesFrom(obo:OBI_0000299 ObjectUnionOf(obo:BFO_0000027 obo:BFO_0000030))))
@@ -882,6 +923,7 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000833> ObjectSomeValuesFrom(obo:OBI_00
 
 # Class: <https://w3id.org/pmd/co/PMD_0000848> (mechanical property)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000848> "The axiom that mechanical property has realization some application of mechanical load treats only conventional materials and not such effects as magnetostriction etc."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000848> "mechanical property"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000848> <https://w3id.org/pmd/co/PMD_0000005>)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000848> ObjectSomeValuesFrom(obo:BFO_0000054 <https://w3id.org/pmd/co/PMD_0000522>))
@@ -889,6 +931,7 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000848> ObjectSomeValuesFrom(obo:RO_000
 
 # Class: <https://w3id.org/pmd/co/PMD_0000853> (crystallographic texture)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000853> "typically observed through crystallographic analysis"@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000853> "crystallographic texture"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000853> <https://w3id.org/pmd/co/PMD_0020131>)
 
@@ -930,6 +973,7 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000891> obo:BFO_0000027)
 
 # Class: <https://w3id.org/pmd/co/PMD_0000896> (pressure)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000896> "The pressure is commonly measured in Pascals."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000896> "pressure"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000896> <https://w3id.org/pmd/co/PMD_0020131>)
 DisjointClasses(<https://w3id.org/pmd/co/PMD_0000896> <https://w3id.org/pmd/co/PMD_0000967>)
@@ -972,6 +1016,8 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0000952> <https://w3id.org/pmd/co/PMD_00
 
 # Class: <https://w3id.org/pmd/co/PMD_0000967> (temperature)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000967> "The concept refers to an absolute temperature, not to be mistaken with temperature difference."@en)
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000967> "To express that an object has a temperature, the property 'intensive bearer of' can be used. It implies a chain of: object consists of some portion of matter and portion of matter bearer of some temperature."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000967> "temperature"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000967> <https://w3id.org/pmd/co/PMD_0020131>)
 
@@ -1015,6 +1061,9 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0020023> obo:OBI_0001930)
 
 # Class: <https://w3id.org/pmd/co/PMD_0020099> (bravais lattice (3D))
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0020099> "TODO: possibly extend for 2D (Graphene etc)
+
+More elaborate crystal descriptions may be found in http://emmo.info/domain-crystallography/crystallography or https://purls.helmholtz-metadaten.de/disos/cso"@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0020099> "bravais lattice (3D)"@en)
 EquivalentClasses(<https://w3id.org/pmd/co/PMD_0020099> ObjectOneOf(<https://w3id.org/pmd/co/PMD_0020006> <https://w3id.org/pmd/co/PMD_0020007> <https://w3id.org/pmd/co/PMD_0020008> <https://w3id.org/pmd/co/PMD_0020009> <https://w3id.org/pmd/co/PMD_0020010> <https://w3id.org/pmd/co/PMD_0020011> <https://w3id.org/pmd/co/PMD_0020012> <https://w3id.org/pmd/co/PMD_0020013> <https://w3id.org/pmd/co/PMD_0020014> <https://w3id.org/pmd/co/PMD_0020015> <https://w3id.org/pmd/co/PMD_0020016> <https://w3id.org/pmd/co/PMD_0020017> <https://w3id.org/pmd/co/PMD_0020018> <https://w3id.org/pmd/co/PMD_0020019>))
 SubClassOf(<https://w3id.org/pmd/co/PMD_0020099> obo:OBI_0001930)
@@ -1060,7 +1109,7 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0020116> obo:OBI_0001930)
 
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0020131> "intensive quality"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0020131> obo:BFO_0000019)
-SubClassOf(<https://w3id.org/pmd/co/PMD_0020131> ObjectSomeValuesFrom(obo:RO_0000080 <https://w3id.org/pmd/co/PMD_0000001>))
+SubClassOf(Annotation(rdfs:comment "Due to the duality of object and portion of matter this axiom can not be an equivalent class axiom."@en) <https://w3id.org/pmd/co/PMD_0020131> ObjectSomeValuesFrom(obo:RO_0000080 <https://w3id.org/pmd/co/PMD_0000001>))
 
 # Class: <https://w3id.org/pmd/co/PMD_0020202> (crack)
 
@@ -1093,6 +1142,7 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0025001> <https://w3id.org/pmd/co/PMD_00
 
 # Class: <https://w3id.org/pmd/co/PMD_0025003> (metallic grain structure)
 
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0025003> "ferrite, austenite, martensite, etc."@en)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0025003> "metallic grain structure"@en)
 EquivalentClasses(<https://w3id.org/pmd/co/PMD_0025003> ObjectExactCardinality(1 <https://w3id.org/pmd/co/PMD_0000077> <https://w3id.org/pmd/co/PMD_0020023>))
 SubClassOf(<https://w3id.org/pmd/co/PMD_0025003> <https://w3id.org/pmd/co/PMD_0020131>)
