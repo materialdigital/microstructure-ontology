@@ -1,0 +1,4 @@
+# Terms to import from the tto ontology via SLME extraction
+# Format: one IRI per line (blank lines and # comments are ignored)
+# Example: https://w3id.org/pmd/co/PMDCO_0000001
+# Leave empty to import the minimal closure (only referenced terms).
