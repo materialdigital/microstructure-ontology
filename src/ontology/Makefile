@@ -188,7 +188,7 @@ all_main: $(MAIN_FILES)
 # ----------------------------------------
 
 
-IMPORTS =  pmdco logo tto
+IMPORTS =  pmdco tto
 
 IMPORT_ROOTS = $(patsubst %, $(IMPORTDIR)/%_import, $(IMPORTS))
 IMPORT_OWL_FILES = $(foreach n,$(IMPORT_ROOTS), $(n).owl)
@@ -500,13 +500,6 @@ ifeq ($(MIR),true)
 .PRECIOUS: $(MIRRORDIR)/pmdco.owl
 mirror-pmdco: | $(TMPDIR)
 	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/core-ontology/refs/heads/main/pmdco-full.owl -o $(TMPDIR)/$@.owl
-
-
-## ONTOLOGY: logo
-.PHONY: mirror-logo
-.PRECIOUS: $(MIRRORDIR)/logo.owl
-mirror-logo: | $(TMPDIR)
-	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/logistics-application-ontology/refs/heads/main/log-base.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: tto
