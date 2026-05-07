@@ -2,7 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
   <group id="odk-managed-catalog" prefer="public">
     <uri name="https://w3id.org/pmd/microstructure/imports/pmdco_import.owl" uri="imports/pmdco_import.owl" />
-    <uri name="https://w3id.org/pmd/microstructure/imports/logo_import.owl" uri="imports/logo_import.owl" />
     <uri name="https://w3id.org/pmd/microstructure/imports/tto_import.owl" uri="imports/tto_import.owl" />
     <uri name="https://w3id.org/pmd/microstructure/components/imports-edit.owl" uri="components/imports-edit.owl" />
     <uri name="https://w3id.org/pmd/microstructure/components/microstructure-shared.owl" uri="components/microstructure-shared.owl" />
