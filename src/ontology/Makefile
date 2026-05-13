@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                f7e1bd51ad20c35e37f4ea4a0e991e68f524393dd220a5841b75d6d1447e6df0
+CONFIG_HASH=                c8acffb99071c1fe7ff7974c8a9b0709f90e3c09dbfe5e7a00bdb783f9747df3
 
 
 # ----------------------------------------
@@ -26,8 +26,7 @@ EDIT_FORMAT=                owl
 SRC =                       $(ONT)-edit.$(EDIT_FORMAT)
 MAKE_FAST=                  $(MAKE) IMP=false PAT=false COMP=false MIR=false
 CATALOG=                    catalog-v001.xml
-CONTEXT_FILE =              config/context.json
-ROBOT=                      robot --catalog $(CATALOG) --add-prefixes $(CONTEXT_FILE)
+ROBOT=                      robot --catalog $(CATALOG)
 REASONER=                   ELK
 OWLTOOLS =                  owltools --use-catalog
 RELEASEDIR=                 ../..
@@ -58,14 +57,14 @@ OBODATE ?=                  $(shell date +'%d:%m:%Y %H:%M')
 VERSION=                    $(TODAY)
 ANNOTATE_ONTOLOGY_VERSION = annotate -V $(ONTBASE)/releases/$(VERSION)/$@ --annotation owl:versionInfo $(VERSION)
 ANNOTATE_CONVERT_FILE =     annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) convert -f ofn --output $@.tmp.owl && mv $@.tmp.owl $@
-OTHER_SRC =                 $(COMPONENTSDIR)/imports-edit.owl $(COMPONENTSDIR)/microstructure-shared.owl $(COMPONENTSDIR)/microstructure-axioms-shared.owl $(COMPONENTSDIR)/microstructure-crystallography.owl $(COMPONENTSDIR)/microstructure-microscopy.owl $(COMPONENTSDIR)/microstructure-defects.owl $(COMPONENTSDIR)/microstructure-damage.owl $(COMPONENTSDIR)/microstructure-phases.owl 
+OTHER_SRC =                 $(COMPONENTSDIR)/imports-edit.owl $(COMPONENTSDIR)/microstructure-axioms-shared.owl $(COMPONENTSDIR)/microstructure-characterization.owl $(COMPONENTSDIR)/microstructure-manufacturing.owl $(COMPONENTSDIR)/microstructure-materials.owl $(COMPONENTSDIR)/microstructure-texture.owl $(COMPONENTSDIR)/microstructure-shared.owl 
 ONTOLOGYTERMS =             $(TMPDIR)/ontologyterms.txt
 EDIT_PREPROCESSED =         $(TMPDIR)/$(ONT)-preprocess.owl
 
 
-FORMATS = $(sort  owl ttl json owl)
+FORMATS = $(sort  owl ttl owl)
 FORMATS_INCL_TSV = $(sort $(FORMATS) tsv)
-RELEASE_ARTEFACTS = $(sort $(ONT)-base $(ONT)-full )
+RELEASE_ARTEFACTS = $(sort $(ONT)-base $(ONT)-full $(ONT)-simple )
 
 ifeq ($(ODK_DEBUG),yes)
 ODK_DEBUG_FILE = debug.log
@@ -188,7 +187,7 @@ all_main: $(MAIN_FILES)
 # ----------------------------------------
 
 
-IMPORTS =  pmdco tto
+IMPORTS =  pmdco tto uo cryo qudt
 
 IMPORT_ROOTS = $(patsubst %, $(IMPORTDIR)/%_import, $(IMPORTS))
 IMPORT_OWL_FILES = $(foreach n,$(IMPORT_ROOTS), $(n).owl)
@@ -372,6 +371,14 @@ $(SRCMERGED): $(EDIT_PREPROCESSED) $(OTHER_SRC)
 $(EDIT_PREPROCESSED): $(SRC)
 	$(ROBOT) convert --input $< --format ofn --output $@
 
+SIMPLESEED=$(TMPDIR)/simple_seed.txt
+
+$(SIMPLESEED): $(SRCMERGED) $(ONTOLOGYTERMS)
+	$(ROBOT) query -f csv -i $< --query ../sparql/simple-seed.sparql $@.tmp &&\
+	cat $@.tmp $(ONTOLOGYTERMS) | sort | uniq >  $@ &&\
+	echo "http://www.geneontology.org/formats/oboInOwl#SubsetProperty" >> $@ &&\
+	echo "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty" >> $@
+
 # seed.txt contains all entities to import in addition to those defined
 # in the individual _terms.txt files.
 IMPORTSEED = $(TMPDIR)/seed.txt
@@ -380,7 +387,7 @@ $(IMPORTSEED): $(PRESEED) | $(TMPDIR)
 
 T_IMPORTSEED = --term-file $(IMPORTSEED)
 
-ANNOTATION_PROPERTIES=rdfs:label IAO:0000115 OMO:0002000 skos:definition
+ANNOTATION_PROPERTIES=rdfs:label skos:definition skos:example skos:comment skos:altLabel 
 
 # ----------------------------------------
 # Import modules
@@ -409,6 +416,36 @@ $(IMPORTDIR)/%_import.owl: $(MIRRORDIR)/%.owl $(IMPORTDIR)/%_terms.txt \
 		 $(ANNOTATE_CONVERT_FILE)
 
 .PRECIOUS: $(IMPORTDIR)/%_import.owl
+
+## Module for ontology: pmdco (custom)
+$(IMPORTDIR)/pmdco_import.owl: $(MIRRORDIR)/pmdco.owl
+	@echo "ERROR: You have configured pmdco as a custom module;"
+	@echo "       This rule needs to be overwritten in microstructure.Makefile!"
+	@false
+
+## Module for ontology: tto (custom)
+$(IMPORTDIR)/tto_import.owl: $(MIRRORDIR)/tto.owl
+	@echo "ERROR: You have configured tto as a custom module;"
+	@echo "       This rule needs to be overwritten in microstructure.Makefile!"
+	@false
+
+## Module for ontology: uo (custom)
+$(IMPORTDIR)/uo_import.owl: $(MIRRORDIR)/uo.owl
+	@echo "ERROR: You have configured uo as a custom module;"
+	@echo "       This rule needs to be overwritten in microstructure.Makefile!"
+	@false
+
+## Module for ontology: cryo (custom)
+$(IMPORTDIR)/cryo_import.owl: $(MIRRORDIR)/cryo.owl
+	@echo "ERROR: You have configured cryo as a custom module;"
+	@echo "       This rule needs to be overwritten in microstructure.Makefile!"
+	@false
+
+## Module for ontology: qudt (custom)
+$(IMPORTDIR)/qudt_import.owl: $(MIRRORDIR)/qudt.owl
+	@echo "ERROR: You have configured qudt as a custom module;"
+	@echo "       This rule needs to be overwritten in microstructure.Makefile!"
+	@false
 
 endif # IMP=true
 
@@ -448,25 +485,23 @@ all_components: $(OTHER_SRC)
 .PHONY: recreate-components
 recreate-components:
 	$(MAKE) --assume-new=$(TMPDIR)/stamp-component-imports-edit.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-shared.owl \
 		--assume-new=$(TMPDIR)/stamp-component-microstructure-axioms-shared.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-crystallography.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-microscopy.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-defects.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-damage.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-phases.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-characterization.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-manufacturing.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-materials.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-texture.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-shared.owl \
 		COMP=true IMP=false MIR=true PAT=true all_components
 
 .PHONY: no-mirror-recreate-components
 no-mirror-recreate-components:
 	$(MAKE) --assume-new=$(TMPDIR)/stamp-component-imports-edit.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-shared.owl \
 		--assume-new=$(TMPDIR)/stamp-component-microstructure-axioms-shared.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-crystallography.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-microscopy.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-defects.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-damage.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-phases.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-characterization.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-manufacturing.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-materials.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-texture.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-shared.owl \
 		COMP=true IMP=false MIR=false PAT=true all_components
 
 .PHONY: recreate-%
@@ -499,14 +534,35 @@ ifeq ($(MIR),true)
 .PHONY: mirror-pmdco
 .PRECIOUS: $(MIRRORDIR)/pmdco.owl
 mirror-pmdco: | $(TMPDIR)
-	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/core-ontology/refs/heads/main/pmdco-full.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://materialdigital.github.io/core-ontology/ontology.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: tto
 .PHONY: mirror-tto
 .PRECIOUS: $(MIRRORDIR)/tto.owl
 mirror-tto: | $(TMPDIR)
-	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/tto-base.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/src/ontology/tto-full.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: uo
+.PHONY: mirror-uo
+.PRECIOUS: $(MIRRORDIR)/uo.owl
+mirror-uo: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/bio-ontology-research-group/unit-ontology/refs/heads/master/uo-full.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: cryo
+.PHONY: mirror-cryo
+.PRECIOUS: $(MIRRORDIR)/cryo.owl
+mirror-cryo: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/cmllezr/crystallography-subdomain-ontology/refs/heads/main/cryo-full.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: qudt
+.PHONY: mirror-qudt
+.PRECIOUS: $(MIRRORDIR)/qudt.owl
+mirror-qudt: | $(TMPDIR)
+	$(ROBOT) convert -I https://qudt.org/qudt-all -o $(TMPDIR)/$@.owl
 
 
 $(MIRRORDIR)/%.owl: mirror-% | $(MIRRORDIR)
@@ -534,10 +590,6 @@ $(SUBSETDIR)/%.owl: $(ONT).owl | $(SUBSETDIR) all_robot_plugins
 $(SUBSETDIR)/%.ttl: $(SUBSETDIR)/%.owl
 	$(ROBOT) convert --input $< --check false -f ttl -o $@.tmp.ttl && mv $@.tmp.ttl $@
 
-$(SUBSETDIR)/%.json: $(SUBSETDIR)/%.owl
-	$(ROBOT) convert --input $< --check false -f json -o $@.tmp.json &&\
-	mv $@.tmp.json $@
-
 
 # ---------------------------------------------
 # Sparql queries: Table exports / Query Reports
@@ -560,17 +612,12 @@ endif
 $(ONT)-base.ttl: $(ONT)-base.owl
 	$(ROBOT) annotate --input $< --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
 		convert --check false -f ttl -o $@.tmp.ttl && mv $@.tmp.ttl $@
-$(ONT)-base.json: $(ONT)-base.owl
-	$(ROBOT) annotate --input $< --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
-		convert --check false -f json -o $@.tmp.json &&\
-		mv $@.tmp.json $@
 $(ONT)-full.ttl: $(ONT)-full.owl
 	$(ROBOT) annotate --input $< --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
 		convert --check false -f ttl -o $@.tmp.ttl && mv $@.tmp.ttl $@
-$(ONT)-full.json: $(ONT)-full.owl
+$(ONT)-simple.ttl: $(ONT)-simple.owl
 	$(ROBOT) annotate --input $< --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
-		convert --check false -f json -o $@.tmp.json &&\
-		mv $@.tmp.json $@
+		convert --check false -f ttl -o $@.tmp.ttl && mv $@.tmp.ttl $@
 # ----------------------------------------
 # Release artefacts: main release artefacts
 # ----------------------------------------
@@ -582,10 +629,6 @@ $(ONT).owl: $(ONT)-full.owl
 $(ONT).ttl: $(ONT).owl
 	$(ROBOT) annotate --input $< --ontology-iri $(URIBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
 		convert --check false -f ttl -o $@.tmp.ttl && mv $@.tmp.ttl $@
-$(ONT).json: $(ONT).owl
-	$(ROBOT) annotate --input $< --ontology-iri $(URIBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) \
-		convert --check false -f json -o $@.tmp.json &&\
-		mv $@.tmp.json $@
 # -----------------------------------------------------
 # Release artefacts: variants (base, full, simple, etc)
 # -----------------------------------------------------
@@ -617,6 +660,19 @@ $(ONT)-full.owl: $(EDIT_PREPROCESSED) $(OTHER_SRC) $(IMPORT_FILES)
 		reason --reasoner $(REASONER) --equivalent-classes-allowed asserted-only --exclude-tautologies structural \
 		relax $(RELAX_OPTIONS) \
 		reduce -r $(REASONER) $(REDUCE_OPTIONS) \
+		$(SHARED_ROBOT_COMMANDS) annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) --output $@.tmp.owl && mv $@.tmp.owl $@
+# foo-simple: (edit->reason,relax,reduce,drop imports, drop every axiom which contains an entity outside the "namespaces of interest")
+# drop every axiom: filter --term-file keep_terms.txt --trim true
+#	remove --select imports --trim false
+$(ONT)-simple.owl: $(EDIT_PREPROCESSED) $(OTHER_SRC) $(SIMPLESEED) $(IMPORT_FILES) | all_robot_plugins
+	$(ROBOT_RELEASE_IMPORT_MODE) \
+		reason --reasoner $(REASONER) --equivalent-classes-allowed asserted-only --exclude-tautologies structural --annotate-inferred-axioms false \
+		relax $(RELAX_OPTIONS) \
+		remove --axioms equivalent \
+		filter --term-file $(SIMPLESEED) --select "annotations ontology anonymous self" --trim true --signature true \
+		reduce -r $(REASONER) $(REDUCE_OPTIONS) \
+		odk:normalize --base-iri https://w3id.org/pmd --subset-decls true --synonym-decls true \
+		repair --merge-axiom-annotations true \
 		$(SHARED_ROBOT_COMMANDS) annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) --output $@.tmp.owl && mv $@.tmp.owl $@
 # ----------------------------------------
 # Debugging Tools
@@ -679,6 +735,8 @@ update_repo:
 	odk.py update
 	
 
+update_docs:
+	mkdocs gh-deploy --config-file ../../mkdocs.yaml
 
 # Note to future generations: computing the real path relative to the
 # current directory is a way to ensure we only clean up directories that

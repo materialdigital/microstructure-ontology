@@ -1,0 +1,28 @@
+https://w3id.org/pmd/cryo/CRYO_0000020 # direction MI
+https://w3id.org/pmd/cryo/CRYO_0000021 # family of directions MI
+https://w3id.org/pmd/cryo/CRYO_0000022 # plane MI
+https://w3id.org/pmd/cryo/CRYO_0000023 # family of planes MI
+https://w3id.org/pmd/cryo/CRYO_0000024 # point MI
+
+https://w3id.org/pmd/cryo/CRYO_0000012 # crystallographic direction
+https://w3id.org/pmd/cryo/CRYO_0000011 # crystallographic plane
+https://w3id.org/pmd/cryo/CRYO_0000028 # crystal system value
+https://w3id.org/pmd/cryo/CRYO_0000026 # crystal system
+https://w3id.org/pmd/cryo/CRYO_0000036 # lattice centering value
+https://w3id.org/pmd/cryo/CRYO_0000027 # lattice centering
+https://w3id.org/pmd/cryo/CRYO_0000042  # grain orientation
+https://w3id.org/pmd/cryo/CRYO_0000075  # Euler angles
+https://w3id.org/pmd/cryo/CRYO_0000079  # Bunge Euler angles
+
+
+# Object properties
+https://w3id.org/pmd/cryo/CRYO_0000164 # denoted by family
+https://w3id.org/pmd/cryo/CRYO_0000168 # 'denoted by family under cubic symmetry'
+https://w3id.org/pmd/cryo/CRYO_0000170 # is cubic
+
+
+
+
+
+
+
