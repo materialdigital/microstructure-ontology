@@ -1,4 +1,4 @@
-# DiStEL Microstructure Ontology
+# Microstructure Ontology
 
 Description: PMD Core application ontology generated via ODK Template.
 
