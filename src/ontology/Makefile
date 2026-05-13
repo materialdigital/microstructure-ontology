@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                c8acffb99071c1fe7ff7974c8a9b0709f90e3c09dbfe5e7a00bdb783f9747df3
+CONFIG_HASH=                495b815776e4285522f4de7f94d5ccfbbdb169a63a8896972c6d02ec271da177
 
 
 # ----------------------------------------
@@ -57,7 +57,7 @@ OBODATE ?=                  $(shell date +'%d:%m:%Y %H:%M')
 VERSION=                    $(TODAY)
 ANNOTATE_ONTOLOGY_VERSION = annotate -V $(ONTBASE)/releases/$(VERSION)/$@ --annotation owl:versionInfo $(VERSION)
 ANNOTATE_CONVERT_FILE =     annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) convert -f ofn --output $@.tmp.owl && mv $@.tmp.owl $@
-OTHER_SRC =                 $(COMPONENTSDIR)/imports-edit.owl $(COMPONENTSDIR)/microstructure-axioms-shared.owl $(COMPONENTSDIR)/microstructure-characterization.owl $(COMPONENTSDIR)/microstructure-manufacturing.owl $(COMPONENTSDIR)/microstructure-materials.owl $(COMPONENTSDIR)/microstructure-texture.owl $(COMPONENTSDIR)/microstructure-shared.owl 
+OTHER_SRC =                 $(COMPONENTSDIR)/imports-edit.owl $(COMPONENTSDIR)/microstructure-shared.owl $(COMPONENTSDIR)/microstructure-axioms-shared.owl $(COMPONENTSDIR)/microstructure-microscopy.owl $(COMPONENTSDIR)/microstructure-defects.owl $(COMPONENTSDIR)/microstructure-damage.owl $(COMPONENTSDIR)/microstructure-phases.owl 
 ONTOLOGYTERMS =             $(TMPDIR)/ontologyterms.txt
 EDIT_PREPROCESSED =         $(TMPDIR)/$(ONT)-preprocess.owl
 
@@ -387,7 +387,7 @@ $(IMPORTSEED): $(PRESEED) | $(TMPDIR)
 
 T_IMPORTSEED = --term-file $(IMPORTSEED)
 
-ANNOTATION_PROPERTIES=rdfs:label skos:definition skos:example skos:comment skos:altLabel 
+ANNOTATION_PROPERTIES=rdfs:label IAO:0000115 OMO:0002000 
 
 # ----------------------------------------
 # Import modules
@@ -422,7 +422,6 @@ $(IMPORTDIR)/pmdco_import.owl: $(MIRRORDIR)/pmdco.owl
 	@echo "ERROR: You have configured pmdco as a custom module;"
 	@echo "       This rule needs to be overwritten in microstructure.Makefile!"
 	@false
-
 
 ## Module for ontology: uo (custom)
 $(IMPORTDIR)/uo_import.owl: $(MIRRORDIR)/uo.owl
@@ -480,23 +479,23 @@ all_components: $(OTHER_SRC)
 .PHONY: recreate-components
 recreate-components:
 	$(MAKE) --assume-new=$(TMPDIR)/stamp-component-imports-edit.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-axioms-shared.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-characterization.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-manufacturing.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-materials.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-texture.owl \
 		--assume-new=$(TMPDIR)/stamp-component-microstructure-shared.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-axioms-shared.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-microscopy.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-defects.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-damage.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-phases.owl \
 		COMP=true IMP=false MIR=true PAT=true all_components
 
 .PHONY: no-mirror-recreate-components
 no-mirror-recreate-components:
 	$(MAKE) --assume-new=$(TMPDIR)/stamp-component-imports-edit.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-axioms-shared.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-characterization.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-manufacturing.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-materials.owl \
-		--assume-new=$(TMPDIR)/stamp-component-microstructure-texture.owl \
 		--assume-new=$(TMPDIR)/stamp-component-microstructure-shared.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-axioms-shared.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-microscopy.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-defects.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-damage.owl \
+		--assume-new=$(TMPDIR)/stamp-component-microstructure-phases.owl \
 		COMP=true IMP=false MIR=false PAT=true all_components
 
 .PHONY: recreate-%
@@ -529,7 +528,7 @@ ifeq ($(MIR),true)
 .PHONY: mirror-pmdco
 .PRECIOUS: $(MIRRORDIR)/pmdco.owl
 mirror-pmdco: | $(TMPDIR)
-	$(ROBOT) convert -I https://materialdigital.github.io/core-ontology/ontology.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/core-ontology/refs/heads/main/pmdco-full.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: uo
@@ -723,8 +722,6 @@ update_repo:
 	odk.py update
 	
 
-update_docs:
-	mkdocs gh-deploy --config-file ../../mkdocs.yaml
 
 # Note to future generations: computing the real path relative to the
 # current directory is a way to ensure we only clean up directories that
