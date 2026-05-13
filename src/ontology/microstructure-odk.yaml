@@ -99,11 +99,35 @@ idranges:
     iddigits: 7
     range_start: 10000
     range_end: 19999
-  - allocatedto: naeim
+  - allocatedto: philipp
     idsfor: microstructure
     idprefix: https://w3id.org/pmd/microstructure/MICROSTRUCTURE_
     iddigits: 7
     range_start: 20000
     range_end: 29999
+  - allocatedto: naeim
+    idsfor: microstructure
+    idprefix: https://w3id.org/pmd/microstructure/MICROSTRUCTURE_
+    iddigits: 7
+    range_start: 30000
+    range_end: 39999
+  - allocatedto: abril
+    idsfor: microstructure
+    idprefix: https://w3id.org/pmd/microstructure/MICROSTRUCTURE_
+    iddigits: 7
+    range_start: 40000
+    range_end: 49999
+  - allocatedto: ronak
+    idsfor: microstructure
+    idprefix: https://w3id.org/pmd/microstructure/MICROSTRUCTURE_
+    iddigits: 7
+    range_start: 50000
+    range_end: 59999
+  - allocatedto: yousef
+    idsfor: microstructure
+    idprefix: https://w3id.org/pmd/microstructure/MICROSTRUCTURE_
+    iddigits: 7
+    range_start: 60000
+    range_end: 69999
 namespaces:
   - https://w3id.org/pmd/microstructure/

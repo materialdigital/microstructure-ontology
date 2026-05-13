@@ -8,9 +8,7 @@
 ## If you need to customize your Makefile, make
 ## changes here rather than in the main Makefile
 
-PMDCO_DISJOINTNESS_REMOVAL_TERMS = $(IMPORTDIR)/pmdco_remove_disjoint.txt
 IAO_TO_REMOVE = $(IMPORTDIR)/iao_to_remove.txt
-PMDCO_CLASSES_TO_REMOVE = $(IMPORTDIR)/pmdco_classes_to_remove.txt
 
 # Import CryO from private repo. NOTE MUST BE REMOVED ONCE CRYO IS PUBLIC
 CONFIG_FILE := $(firstword $(wildcard ../../microstructure-odk.yaml ../microstructure-odk.yaml microstructure-odk.yaml ../../ontology-config.yaml ../ontology-config.yaml ontology-config.yaml))
@@ -90,10 +88,6 @@ $(IMPORTDIR)/pmdco_import.owl: $(MIRRORDIR)/pmdco.owl $(IMPORTDIR)/pmdco_terms.t
 	  remove --term http://purl.obolibrary.org/obo/IAO_0000412 \
              --select annotation \
 	  \
-	  remove --term-file $(PMDCO_DISJOINTNESS_REMOVAL_TERMS) \
-			 --axioms DisjointClasses \
-	  remove --term-file $(PMDCO_CLASSES_TO_REMOVE) \
-			 --select "classes"\
 	  remove --term-file $(IAO_TO_REMOVE) \
 			 --select "individuals classes"\
 	  $(ANNOTATE_CONVERT_FILE); \
