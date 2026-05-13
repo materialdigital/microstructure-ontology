@@ -9,7 +9,6 @@ Prefix: : <https://w3id.org/pmd/microstructure/components/microstructure-axioms-
 
 Ontology: <https://w3id.org/pmd/microstructure/components/microstructure-axioms-shared.owl>
 
-Import: <https://w3id.org/pmd/microstructure/components/microstructure-crystallography.owl>
 Import: <https://w3id.org/pmd/microstructure/components/microstructure-damage.owl>
 Import: <https://w3id.org/pmd/microstructure/components/microstructure-defects.owl>
 Import: <https://w3id.org/pmd/microstructure/components/microstructure-microscopy.owl>
