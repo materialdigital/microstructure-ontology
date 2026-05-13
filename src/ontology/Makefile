@@ -187,7 +187,7 @@ all_main: $(MAIN_FILES)
 # ----------------------------------------
 
 
-IMPORTS =  pmdco tto uo cryo qudt
+IMPORTS =  pmdco uo cryo qudt
 
 IMPORT_ROOTS = $(patsubst %, $(IMPORTDIR)/%_import, $(IMPORTS))
 IMPORT_OWL_FILES = $(foreach n,$(IMPORT_ROOTS), $(n).owl)
@@ -423,11 +423,6 @@ $(IMPORTDIR)/pmdco_import.owl: $(MIRRORDIR)/pmdco.owl
 	@echo "       This rule needs to be overwritten in microstructure.Makefile!"
 	@false
 
-## Module for ontology: tto (custom)
-$(IMPORTDIR)/tto_import.owl: $(MIRRORDIR)/tto.owl
-	@echo "ERROR: You have configured tto as a custom module;"
-	@echo "       This rule needs to be overwritten in microstructure.Makefile!"
-	@false
 
 ## Module for ontology: uo (custom)
 $(IMPORTDIR)/uo_import.owl: $(MIRRORDIR)/uo.owl
@@ -535,13 +530,6 @@ ifeq ($(MIR),true)
 .PRECIOUS: $(MIRRORDIR)/pmdco.owl
 mirror-pmdco: | $(TMPDIR)
 	$(ROBOT) convert -I https://materialdigital.github.io/core-ontology/ontology.owl -o $(TMPDIR)/$@.owl
-
-
-## ONTOLOGY: tto
-.PHONY: mirror-tto
-.PRECIOUS: $(MIRRORDIR)/tto.owl
-mirror-tto: | $(TMPDIR)
-	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/src/ontology/tto-full.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: uo
