@@ -10,5 +10,7 @@ Prefix: : <https://w3id.org/pmd/microstructure/components/imports-edit.owl>
 Ontology: <https://w3id.org/pmd/microstructure/components/imports-edit.owl>
 
 Import: <https://w3id.org/pmd/microstructure/imports/pmdco_import.owl>
-Import: <https://w3id.org/pmd/microstructure/imports/tto_import.owl>
+Import: <https://w3id.org/pmd/microstructure/imports/cryo_import.owl>
+Import: <https://w3id.org/pmd/microstructure/imports/uo_import.owl>
+Import: <https://w3id.org/pmd/microstructure/imports/qudt_import.owl>
 
