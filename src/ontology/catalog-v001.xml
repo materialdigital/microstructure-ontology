@@ -4,6 +4,9 @@
     <uri name="https://w3id.org/pmd/microstructure/imports/pmdco_import.owl" uri="imports/pmdco_import.owl" />
     <uri name="https://w3id.org/pmd/microstructure/imports/logo_import.owl" uri="imports/logo_import.owl" />
     <uri name="https://w3id.org/pmd/microstructure/imports/tto_import.owl" uri="imports/tto_import.owl" />
+    <uri name="https://w3id.org/pmd/microstructure/imports/uo_import.owl" uri="imports/uo_import.owl" />
+    <uri name="https://w3id.org/pmd/microstructure/imports/cryo_import.owl" uri="imports/cryo_import.owl" />
+    <uri name="https://w3id.org/pmd/microstructure/imports/qudt_import.owl" uri="imports/qudt_import.owl" />
     <uri name="https://w3id.org/pmd/microstructure/components/imports-edit.owl" uri="components/imports-edit.owl" />
     <uri name="https://w3id.org/pmd/microstructure/components/microstructure-shared.owl" uri="components/microstructure-shared.owl" />
     <uri name="https://w3id.org/pmd/microstructure/components/microstructure-axioms-shared.owl" uri="components/microstructure-axioms-shared.owl" />

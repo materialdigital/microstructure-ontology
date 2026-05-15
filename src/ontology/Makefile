@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                f6b6373a03fd447b43afd97211c2e30d5767a0491b3c06e49e1d4a253d3dad81
+CONFIG_HASH=                271e25fe84944489cd730d77d6260c3065fdef73b5172242dbebab08467f43f9
 
 
 # ----------------------------------------
@@ -188,7 +188,7 @@ all_main: $(MAIN_FILES)
 # ----------------------------------------
 
 
-IMPORTS =  pmdco logo tto
+IMPORTS =  pmdco logo tto uo cryo qudt
 
 IMPORT_ROOTS = $(patsubst %, $(IMPORTDIR)/%_import, $(IMPORTS))
 IMPORT_OWL_FILES = $(foreach n,$(IMPORT_ROOTS), $(n).owl)
@@ -514,6 +514,27 @@ mirror-logo: | $(TMPDIR)
 .PRECIOUS: $(MIRRORDIR)/tto.owl
 mirror-tto: | $(TMPDIR)
 	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/tto-base.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: uo
+.PHONY: mirror-uo
+.PRECIOUS: $(MIRRORDIR)/uo.owl
+mirror-uo: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/bio-ontology-research-group/unit-ontology/refs/heads/master/uo-full.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: cryo
+.PHONY: mirror-cryo
+.PRECIOUS: $(MIRRORDIR)/cryo.owl
+mirror-cryo: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/cmllezr/crystallography-subdomain-ontology/refs/heads/main/cryo-full.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: qudt
+.PHONY: mirror-qudt
+.PRECIOUS: $(MIRRORDIR)/qudt.owl
+mirror-qudt: | $(TMPDIR)
+	$(ROBOT) convert -I https://qudt.org/qudt-all -o $(TMPDIR)/$@.owl
 
 
 $(MIRRORDIR)/%.owl: mirror-% | $(MIRRORDIR)
