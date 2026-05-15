@@ -506,7 +506,7 @@ mirror-pmdco: | $(TMPDIR)
 .PHONY: mirror-logo
 .PRECIOUS: $(MIRRORDIR)/logo.owl
 mirror-logo: | $(TMPDIR)
-	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/logistics-application-ontology/refs/heads/main/log-base.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://raw.githubusercontent.com/materialdigital/logistics-application-ontology/refs/heads/main/src/ontology/log-base.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: tto
