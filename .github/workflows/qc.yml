@@ -4,11 +4,63 @@ name: build
 
 # Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  # ============================================================================
+  # TRIGGER 1: Repository Dispatch (from setup-repo or update-repo workflow)
+  # ============================================================================
+  # Listens for 'trigger-qc' event dispatched by:
+  #   - setup-repo.yml (after full ontology scaffolding)
+  #   - update-repo.yml (after ODK config regeneration)
+  # This ensures build runs immediately after those workflows complete.
+  # ============================================================================
+  repository_dispatch:
+    types: [trigger-qc]
+
+  # ============================================================================
+  # TRIGGER 2: Push Events (for regular development on main)
+  # ============================================================================
+  # Triggers when core ontology files are pushed to main branch.
+  #
+  # Why main branch only?
+  # - Prevents unnecessary builds on feature/dev branches
+  # - Production artifacts are built from main
+  #
+  # Path filter rationale:
+  # - *-edit.owl : The primary ontology edit file being developed
+  # - components/**: Component OWL modules (classes, properties, axioms)
+  # - imports/**  : Import module definitions and extracted term files
+  # - Makefile    : Core ODK build configuration
+  # - *-Makefile  : User-extended Makefile overrides
+  #
+  # NOTE: Bot commits from this workflow are NOT skipped here via 'if'
+  # conditions on the job. Instead, we avoid the infinite loop by design:
+  # the workflow commits to main, but that commit only touches release
+  # artifacts (*.owl, *.json, *.ttl) — NOT the paths monitored below.
+  # So there is no re-trigger from bot commits.
+  # ============================================================================
   push:
-    branches: [main]
-  # pull_request:
-  #  types: [closed]
+    branches: ["main"]
+    paths:
+      - 'src/ontology/*-edit.owl'      # Main edit file changes
+      - 'src/ontology/components/**'   # Component module changes
+      - 'src/ontology/imports/**'      # Import-related file changes
+      - 'src/ontology/Makefile'        # Core Makefile changes
+      - 'src/ontology/*-Makefile'      # User-generated Makefile changes
+
+  # ============================================================================
+  # TRIGGER 3: Pull Request Events (for PR validation before merge)
+  # ============================================================================
+  # Triggers a dry-run build on pull requests targeting main.
+  # Commits are skipped for PRs (see commit step condition below).
+  # This catches build errors and QC failures before code lands on main.
+  # ============================================================================
+  pull_request:
+    branches: ["main"]
+    paths:
+      - 'src/ontology/*-edit.owl'
+      - 'src/ontology/components/**'
+      - 'src/ontology/imports/**'
+      - 'src/ontology/Makefile'
+      - 'src/ontology/*-Makefile'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
