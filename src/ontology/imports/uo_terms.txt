@@ -1,0 +1,19 @@
+http://purl.obolibrary.org/obo/UO_0000228 # tesla
+http://purl.obolibrary.org/obo/UO_0000106 # hertz
+http://purl.obolibrary.org/obo/UO_0000016 # millimeter
+http://purl.obolibrary.org/obo/UO_0000017 # micrometer
+http://purl.obolibrary.org/obo/UO_0000027 # degrees celsius
+http://purl.obolibrary.org/obo/UO_0000012 # kelvin
+http://purl.obolibrary.org/obo/UO_0000031 # minute
+http://purl.obolibrary.org/obo/UO_0010006 # ratio
+http://purl.obolibrary.org/obo/UO_0000163 # mass 
+http://purl.obolibrary.org/obo/UO_0000163 # mass percentage
+http://purl.obolibrary.org/obo/UO_0000187 # percent
+http://purl.obolibrary.org/obo/UO_0000010 # second
+http://purl.obolibrary.org/obo/UO_0000110 # Pascal
+http://purl.obolibrary.org/obo/UO_0000185 # degree (angle)
+http://purl.obolibrary.org/obo/UO_0000032 # hour
+http://purl.obolibrary.org/obo/UO_1000163 # mass percentage
+http://purl.obolibrary.org/obo/UO_0000164 # mass volume percentage
+http://purl.obolibrary.org/obo/UO_0000165 #volume percentage
+http://purl.obolibrary.org/obo/UO_0000082 # mm2

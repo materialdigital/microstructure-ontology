@@ -68,7 +68,7 @@ preferredPrefix: "MICROSTRUCTURE"
 # When you create a new class in Protégé, ODK uses this namespace to generate:
 # https://w3id.org/pmd/co/tryce/TRYCE_0000001
 namespaces:
-  - "https://w3id.org/pmd/co/placeholder_id/"
+  - "https://w3id.org/pmd/co/micro/"
 # ------------------------------------------------------------------------------
 # TEMPLATES (DISABLED)
 # ------------------------------------------------------------------------------
@@ -99,6 +99,16 @@ import_group:
       module_type: slme
     - id: tto
       mirror_from: https://raw.githubusercontent.com/materialdigital/tensile-test-ontology/refs/heads/main/tto-base.owl
+      module_type: slme
+    - id: uo
+      mirror_from: https://raw.githubusercontent.com/bio-ontology-research-group/unit-ontology/refs/heads/master/uo-full.owl
+      module_type: slme
+    - id: cryo
+      title: "Crystallography Ontology"
+      mirror_from: https://raw.githubusercontent.com/cmllezr/crystallography-subdomain-ontology/refs/heads/main/cryo-full.owl
+      module_type: slme
+    - id: qudt
+      mirror_from: https://qudt.org/qudt-all
       module_type: slme
 # ------------------------------------------------------------------------------
 # COMPONENTS
