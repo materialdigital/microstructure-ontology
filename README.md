@@ -1,9 +1,11 @@
-# DiStEL Microstructure Ontology
+# Microstructure Ontology
 
 Description: PMD Core application ontology generated via ODK Template.
 
 
 More information can be found at http://obofoundry.org/ontology/microstructure
+
+Active development is on [MiroBoard](https://miro.com/welcomeonboard/VFlwdGlCQ2pVWG13WEQyTk52WEYxa00rV0dSeHFXYXRMWEdiRDdSMW9lVHZkOGY0MUNhUXNlK28vajVXY2VnYStPVitWKytYUTBpQStPMGRsZjhTT2YrWE1sRGRtb2MxSU41MTJVd1VHcDFldExUZ3FoQWM1d2FXUjZKOEM5RTZBS2NFMDFkcUNFSnM0d3FEN050ekl3PT0hdjE=?share_link_id=457927824819)
 
 ## Versions
 

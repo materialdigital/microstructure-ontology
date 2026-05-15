@@ -16,7 +16,7 @@
 # These identify your ontology and its location in version control
 
 id: microstructure
-title: "DiStEL Microstructure Ontology"
+title: "Microstructure Ontology"
 github_org: materialdigital
 repo: materialdigital/microstructure-ontology
 git_main_branch: main
