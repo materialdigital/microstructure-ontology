@@ -15,9 +15,9 @@ Prefix(oboInOwl:=<http://www.geneontology.org/formats/oboInOwl#>)
 
 
 Ontology(<https://w3id.org/pmd/microstructure/imports/pmdco_import.owl>
-<https://w3id.org/pmd/microstructure/releases/2026-03-30/imports/pmdco_import.owl>
+<https://w3id.org/pmd/microstructure/releases/2026-05-15/imports/pmdco_import.owl>
 Annotation(<http://purl.org/dc/elements/1.1/source> <https://w3id.org/pmd/co/3.0.0>)
-Annotation(owl:versionInfo "2026-03-30")
+Annotation(owl:versionInfo "2026-05-15")
 
 Declaration(Class(obo:BFO_0000001))
 Declaration(Class(obo:BFO_0000002))
@@ -80,6 +80,7 @@ Declaration(Class(<https://w3id.org/pmd/co/PMD_0000802>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0000833>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0000848>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0000853>))
+Declaration(Class(<https://w3id.org/pmd/co/PMD_0000857>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0000868>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0000877>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0000882>))
@@ -98,6 +99,7 @@ Declaration(Class(<https://w3id.org/pmd/co/PMD_0000981>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0001008>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0010026>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0010033>))
+Declaration(Class(<https://w3id.org/pmd/co/PMD_0020000>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020003>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020005>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020023>))
@@ -110,6 +112,7 @@ Declaration(Class(<https://w3id.org/pmd/co/PMD_0020106>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020112>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020116>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020131>))
+Declaration(Class(<https://w3id.org/pmd/co/PMD_0020160>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020202>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020216>))
 Declaration(Class(<https://w3id.org/pmd/co/PMD_0020220>))
@@ -935,6 +938,12 @@ AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000853> "typicall
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000853> "crystallographic texture"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0000853> <https://w3id.org/pmd/co/PMD_0020131>)
 
+# Class: <https://w3id.org/pmd/co/PMD_0000857> (microstructure)
+
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0000857> "The focus of interest when looking at an object through the microstructure perspective is often its morphology."@en)
+AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000857> "microstructure"@en)
+SubClassOf(<https://w3id.org/pmd/co/PMD_0000857> <https://w3id.org/pmd/co/PMD_0000001>)
+
 # Class: <https://w3id.org/pmd/co/PMD_0000868> (natural organic material)
 
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0000868> "natural organic material"@en)
@@ -1042,6 +1051,11 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0010026> <https://w3id.org/pmd/co/PMD_00
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0010033> "polymerization"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0010033> obo:BFO_0000015)
 
+# Class: <https://w3id.org/pmd/co/PMD_0020000> (phase (thermodynamic))
+
+AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0020000> "phase (thermodynamic)"@en)
+SubClassOf(<https://w3id.org/pmd/co/PMD_0020000> obo:BFO_0000040)
+
 # Class: <https://w3id.org/pmd/co/PMD_0020003> (crystal)
 
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0020003> "crystal"@en)
@@ -1110,6 +1124,12 @@ SubClassOf(<https://w3id.org/pmd/co/PMD_0020116> obo:OBI_0001930)
 AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0020131> "intensive quality"@en)
 SubClassOf(<https://w3id.org/pmd/co/PMD_0020131> obo:BFO_0000019)
 SubClassOf(Annotation(rdfs:comment "Due to the duality of object and portion of matter this axiom can not be an equivalent class axiom."@en) <https://w3id.org/pmd/co/PMD_0020131> ObjectSomeValuesFrom(obo:RO_0000080 <https://w3id.org/pmd/co/PMD_0000001>))
+
+# Class: <https://w3id.org/pmd/co/PMD_0020160> (microconstituent (phase mixture))
+
+AnnotationAssertion(rdfs:comment <https://w3id.org/pmd/co/PMD_0020160> "In metallography the term phase is sometimes used to denote microconstituents. To avoid confusion, the term phase should only be used for thermodynamic phases."@en)
+AnnotationAssertion(rdfs:label <https://w3id.org/pmd/co/PMD_0020160> "microconstituent (phase mixture)"@en)
+SubClassOf(<https://w3id.org/pmd/co/PMD_0020160> <https://w3id.org/pmd/co/PMD_0000001>)
 
 # Class: <https://w3id.org/pmd/co/PMD_0020202> (crack)
 

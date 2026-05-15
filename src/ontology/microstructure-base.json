@@ -16,9 +16,9 @@
         "val" : "DiStEL Microstructure Ontology"
       }, {
         "pred" : "http://www.w3.org/2002/07/owl#versionInfo",
-        "val" : "2026-03-30"
+        "val" : "2026-05-15"
       } ],
-      "version" : "https://w3id.org/pmd/microstructure/releases/2026-03-30/microstructure-base.json"
+      "version" : "https://w3id.org/pmd/microstructure/releases/2026-05-15/microstructure-base.json"
     },
     "nodes" : [ {
       "id" : "http://purl.org/dc/elements/1.1/type",

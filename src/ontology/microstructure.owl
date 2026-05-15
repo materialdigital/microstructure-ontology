@@ -18,12 +18,12 @@
      xmlns:dcterms="http://purl.org/dc/terms/"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="https://w3id.org/pmd/microstructure.owl">
-        <owl:versionIRI rdf:resource="https://w3id.org/pmd/microstructure/releases/2026-03-30/microstructure.owl"/>
+        <owl:versionIRI rdf:resource="https://w3id.org/pmd/microstructure/releases/2026-05-15/microstructure.owl"/>
         <dcterms:description>PMD Core application ontology generated via ODK Template.
 </dcterms:description>
         <dcterms:license rdf:resource="https://w3id.org/pmd/microstructure.owl#CC-BY-4.0"/>
         <dcterms:title>DiStEL Microstructure Ontology</dcterms:title>
-        <owl:versionInfo>2026-03-30</owl:versionInfo>
+        <owl:versionInfo>2026-05-15</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -1697,6 +1697,16 @@ Unfortunately it is not possible to write down such axiom based on OWL. Semi-wor
     
 
 
+    <!-- https://w3id.org/pmd/co/PMD_0000857 -->
+
+    <owl:Class rdf:about="https://w3id.org/pmd/co/PMD_0000857">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/pmd/co/PMD_0000001"/>
+        <rdfs:comment xml:lang="en">The focus of interest when looking at an object through the microstructure perspective is often its morphology.</rdfs:comment>
+        <rdfs:label xml:lang="en">microstructure</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- https://w3id.org/pmd/co/PMD_0000868 -->
 
     <owl:Class rdf:about="https://w3id.org/pmd/co/PMD_0000868">
@@ -1989,6 +1999,15 @@ Unfortunately it is not possible to write down such axiom based on OWL. Semi-wor
     
 
 
+    <!-- https://w3id.org/pmd/co/PMD_0020000 -->
+
+    <owl:Class rdf:about="https://w3id.org/pmd/co/PMD_0020000">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:label xml:lang="en">phase (thermodynamic)</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- https://w3id.org/pmd/co/PMD_0020003 -->
 
     <owl:Class rdf:about="https://w3id.org/pmd/co/PMD_0020003">
@@ -2168,6 +2187,16 @@ More elaborate crystal descriptions may be found in http://emmo.info/domain-crys
         <owl:annotatedTarget rdf:nodeID="genid223"/>
         <rdfs:comment xml:lang="en">Due to the duality of object and portion of matter this axiom can not be an equivalent class axiom.</rdfs:comment>
     </owl:Axiom>
+    
+
+
+    <!-- https://w3id.org/pmd/co/PMD_0020160 -->
+
+    <owl:Class rdf:about="https://w3id.org/pmd/co/PMD_0020160">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/pmd/co/PMD_0000001"/>
+        <rdfs:comment xml:lang="en">In metallography the term phase is sometimes used to denote microconstituents. To avoid confusion, the term phase should only be used for thermodynamic phases.</rdfs:comment>
+        <rdfs:label xml:lang="en">microconstituent (phase mixture)</rdfs:label>
+    </owl:Class>
     
 
 

@@ -13,9 +13,9 @@
         "val" : "DiStEL Microstructure Ontology"
       }, {
         "pred" : "http://www.w3.org/2002/07/owl#versionInfo",
-        "val" : "2026-03-30"
+        "val" : "2026-05-15"
       } ],
-      "version" : "https://w3id.org/pmd/microstructure/releases/2026-03-30/microstructure-full.json"
+      "version" : "https://w3id.org/pmd/microstructure/releases/2026-05-15/microstructure-full.json"
     },
     "nodes" : [ {
       "id" : "http://purl.obolibrary.org/obo/BFO_0000001",
@@ -379,6 +379,13 @@
         "comments" : [ "typically observed through crystallographic analysis" ]
       }
     }, {
+      "id" : "https://w3id.org/pmd/co/PMD_0000857",
+      "lbl" : "microstructure",
+      "type" : "CLASS",
+      "meta" : {
+        "comments" : [ "The focus of interest when looking at an object through the microstructure perspective is often its morphology." ]
+      }
+    }, {
       "id" : "https://w3id.org/pmd/co/PMD_0000868",
       "lbl" : "natural organic material",
       "type" : "CLASS"
@@ -457,6 +464,10 @@
       "lbl" : "polymerization",
       "type" : "CLASS"
     }, {
+      "id" : "https://w3id.org/pmd/co/PMD_0020000",
+      "lbl" : "phase (thermodynamic)",
+      "type" : "CLASS"
+    }, {
       "id" : "https://w3id.org/pmd/co/PMD_0020003",
       "lbl" : "crystal",
       "type" : "CLASS"
@@ -507,6 +518,13 @@
       "id" : "https://w3id.org/pmd/co/PMD_0020131",
       "lbl" : "intensive quality",
       "type" : "CLASS"
+    }, {
+      "id" : "https://w3id.org/pmd/co/PMD_0020160",
+      "lbl" : "microconstituent (phase mixture)",
+      "type" : "CLASS",
+      "meta" : {
+        "comments" : [ "In metallography the term phase is sometimes used to denote microconstituents. To avoid confusion, the term phase should only be used for thermodynamic phases." ]
+      }
     }, {
       "id" : "https://w3id.org/pmd/co/PMD_0020202",
       "lbl" : "crack",
@@ -1428,6 +1446,10 @@
       "pred" : "is_a",
       "obj" : "https://w3id.org/pmd/co/PMD_0020131"
     }, {
+      "sub" : "https://w3id.org/pmd/co/PMD_0000857",
+      "pred" : "is_a",
+      "obj" : "https://w3id.org/pmd/co/PMD_0000001"
+    }, {
       "sub" : "https://w3id.org/pmd/co/PMD_0000868",
       "pred" : "is_a",
       "obj" : "https://w3id.org/pmd/co/PMD_0000000"
@@ -1520,6 +1542,10 @@
       "pred" : "is_a",
       "obj" : "http://purl.obolibrary.org/obo/BFO_0000015"
     }, {
+      "sub" : "https://w3id.org/pmd/co/PMD_0020000",
+      "pred" : "is_a",
+      "obj" : "http://purl.obolibrary.org/obo/BFO_0000040"
+    }, {
       "sub" : "https://w3id.org/pmd/co/PMD_0020003",
       "pred" : "is_a",
       "obj" : "http://purl.obolibrary.org/obo/BFO_0000030"
@@ -1585,6 +1611,10 @@
           "val" : "Due to the duality of object and portion of matter this axiom can not be an equivalent class axiom."
         } ]
       }
+    }, {
+      "sub" : "https://w3id.org/pmd/co/PMD_0020160",
+      "pred" : "is_a",
+      "obj" : "https://w3id.org/pmd/co/PMD_0000001"
     }, {
       "sub" : "https://w3id.org/pmd/co/PMD_0020202",
       "pred" : "is_a",

@@ -17,13 +17,13 @@
 @base <https://w3id.org/pmd/microstructure/microstructure-base.ttl> .
 
 <https://w3id.org/pmd/microstructure/microstructure-base.ttl> rdf:type owl:Ontology ;
-                                                               owl:versionIRI <https://w3id.org/pmd/microstructure/releases/2026-03-30/microstructure-base.ttl> ;
+                                                               owl:versionIRI <https://w3id.org/pmd/microstructure/releases/2026-05-15/microstructure-base.ttl> ;
                                                                dce:type obo:IAO_8000001 ;
                                                                dcterms:description """PMD Core application ontology generated via ODK Template.
 """ ;
                                                                dcterms:license <https://w3id.org/pmd/microstructure.owl#CC-BY-4.0> ;
                                                                dcterms:title "DiStEL Microstructure Ontology" ;
-                                                               owl:versionInfo "2026-03-30" .
+                                                               owl:versionInfo "2026-05-15" .
 
 #################################################################
 #    Annotation properties
