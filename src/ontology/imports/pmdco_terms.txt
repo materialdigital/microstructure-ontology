@@ -25,3 +25,4 @@ https://w3id.org/pmd/co/PMD_0020202 #crack
 https://w3id.org/pmd/co/PMD_0020000 # thermodynamic phase
 https://w3id.org/pmd/co/PMD_0020160 # 'microconstituent (phase mixture)'
 https://w3id.org/pmd/co/PMD_0000857 # microstructure
+https://w3id.org/pmd/co/PMD_0020204 # pore
